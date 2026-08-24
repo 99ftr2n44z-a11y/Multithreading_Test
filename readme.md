@@ -98,4 +98,3 @@ cmake --build . -j$(sysctl -n hw.ncpu)
 - **`std::atomic::notify_all` не найден**: если вы попытаетесь собрать lock-free версию, учтите, что в libc++ от Apple эти методы могут отсутствовать. Оставайтесь на решении с мьютексом.
 - **`cmake` не найден**: установите CMake через Homebrew (`brew install cmake`) или скачайте с cmake.org.
 - **`brew` не найден**: сначала установите Homebrew (`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`).
-
