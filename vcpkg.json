@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "builtin-baseline": "cd61e1e26a038e82d6550a3ebbe0fbbfe7da78e3",
+  "dependencies": [
+    {
+      "name": "benchmark",
+      "default-features": false
+    },
+    {
+      "name": "tbb",
+      "default-features": false
+    },
+    {
+      "name": "spdlog",
+      "default-features": false
+    },
+    "boost-asio",
+    "boost-lockfree",
+    "concurrentqueue",
+    "mpmcqueue",
+    "spscqueue",
+    "quill"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/sedoy/multithreading/build/cmake_install.cmake",
+		"/Users/sedoy/multithreading/build/src/tests/cmake_install.cmake",
+		"/Users/sedoy/multithreading/build/src/benchmarks/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,18 @@
+find_package(benchmark CONFIG)
+if(NOT benchmark_FOUND)
+  return()
+endif()
+
+add_executable(benchmarks EXCLUDE_FROM_ALL benchmarks.hpp benchmarks.cpp)
+target_link_libraries(benchmarks PRIVATE benchmark::benchmark logger)
+
+foreach(LOGGER_HEADER IN LISTS LOGGER_HEADERS)
+  get_filename_component(LOGGER_NAME "${LOGGER_HEADER}" NAME_WLE)
+  add_library(${LOGGER_NAME}_benchmark OBJECT EXCLUDE_FROM_ALL ${LOGGER_HEADER} benchmarks.hpp benchmark.cpp)
+  target_link_libraries(${LOGGER_NAME}_benchmark PUBLIC ${THIRD_PARTY_LIBRARIES} benchmark::benchmark)
+  target_compile_definitions(${LOGGER_NAME}_benchmark PRIVATE "LOGGER_HEADER=<${LOGGER_HEADER}>")
+  if(WIN32)
+    target_compile_definitions(${LOGGER_NAME}_benchmark PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN)
+  endif()
+  target_link_libraries(benchmarks PRIVATE ${LOGGER_NAME}_benchmark)
+endforeach()

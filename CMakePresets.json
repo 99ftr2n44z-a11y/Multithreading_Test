@@ -1,0 +1,54 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build",
+      "installDir": "${sourceDir}/build/install",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "architecture": { "strategy": "external", "value": "x64" },
+      "warnings": { "dev": false },
+      "environment": {
+        "VCPKG_DISABLE_METRICS": "1",
+        "VCPKG_DOWNLOADS": "${sourceDir}/.cache/downloads",
+        "VCPKG_BINARY_SOURCES": "clear;files,${sourceDir}/.cache/archive,readwrite",
+        "X_VCPKG_REGISTRIES_CACHE": "${sourceDir}/.cache/registries",
+        "X_VCPKG_ASSET_SOURCES": ""
+      },
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_STANDARD_REQUIRED": true,
+        "CMAKE_CXX_SCAN_FOR_MODULES": false,
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE": true,
+        "CMAKE_FIND_ROOT_PATH_MODE_INCLUDE": "ONLY",
+        "CMAKE_FIND_ROOT_PATH_MODE_LIBRARY": "ONLY",
+        "CMAKE_FIND_ROOT_PATH_MODE_PACKAGE": "ONLY",
+        "CMAKE_FIND_ROOT_PATH_MODE_PROGRAM": "BOTH",
+        "CMAKE_FIND_ROOT_PATH": "${sourceDir}",
+        "CMAKE_VERBOSE_MAKEFILE": false
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "configuration": "Debug",
+      "configurePreset": "default"
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "configuration": "Release",
+      "configurePreset": "default"
+    }
+  ]
+}
